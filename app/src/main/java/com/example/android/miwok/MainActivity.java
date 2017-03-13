@@ -26,7 +26,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void openNumbersCategory(View view){
+
+        Intent intent = new Intent(this, NumbersActivity.class);
+        startActivity(intent);
+    }
+
+    public void openColorCategory(View view){
+
+        Intent intent = new Intent(this, ColorsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openFamilyCategory(View view){
+
+        Intent intent = new Intent(this, FamilyActivity.class);
+        startActivity(intent);
+    }
+
+    public void openPhrasesCategory(View view){
+
+        Intent intent = new Intent(this, PhrasesActivity.class);
+        startActivity(intent);
     }
 }
