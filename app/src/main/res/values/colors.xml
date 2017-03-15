@@ -34,4 +34,7 @@
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
+
+    <!-- Black color for the English words -->
+    <color name="black">#000000</color>
 </resources>
