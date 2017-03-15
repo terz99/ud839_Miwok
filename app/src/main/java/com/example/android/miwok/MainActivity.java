@@ -16,7 +16,9 @@
 package com.example.android.miwok;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.constraint.solver.SolverVariable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         TextView phrasesTextView = (TextView) findViewById(R.id.phrases);
         TextView familyTextView = (TextView) findViewById(R.id.family);
         TextView colorsTextView = (TextView) findViewById(R.id.colors);
+
+        //Set new typeface to all the TextViews
+        Typeface fabricaTypeface = Typeface.createFromAsset(getAssets(), "fonts/Fabrica.otf");
+        numbersTextView.setTypeface(fabricaTypeface);
+        phrasesTextView.setTypeface(fabricaTypeface);
+        familyTextView.setTypeface(fabricaTypeface);
+        colorsTextView.setTypeface(fabricaTypeface);
 
         // set click listeners
         numbersTextView.setOnClickListener(new OnClickListener(){
