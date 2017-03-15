@@ -1,6 +1,8 @@
 package com.example.android.miwok;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.content.res.Resources;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by terz99 on 3/15/17.
@@ -21,6 +25,8 @@ import java.util.List;
 
 public class WordAdapter extends ArrayAdapter<Word>{
 
+
+    private Context context;
 
     /*
         Constructor
@@ -33,6 +39,7 @@ public class WordAdapter extends ArrayAdapter<Word>{
             do not need it
          */
         super(context, 0, words);
+        this.context = context;
     }
 
 
@@ -54,8 +61,12 @@ public class WordAdapter extends ArrayAdapter<Word>{
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_textview);
         TextView englishTextView = (TextView) listItemView.findViewById(R.id.english_textview);
 
+        Typeface fabricaTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Fabrica.otf");
+
         miwokTextView.setText(currentWord.getMiwokWord());
         englishTextView.setText(currentWord.getEnglishWord());
+        miwokTextView.setTypeface(fabricaTypeface);
+        englishTextView.setTypeface(fabricaTypeface);
 
         return listItemView;
     }

@@ -9,7 +9,7 @@
     
     <TextView
         android:textColor="@color/black"
-        android:textSize="22dp"
+        android:textSize="@dimen/miwok_word_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         tools:text="miwok_word"
@@ -17,7 +17,7 @@
         />
     
     <TextView
-        android:textSize="18dp"
+        android:textSize="@dimen/english_word_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="english_word"
