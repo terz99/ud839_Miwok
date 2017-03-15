@@ -14,7 +14,7 @@ public class Word {
         @param: miwokWord - the word in Miwok
         @param: englishWord - the word in English
      */
-    public Word(String miwokWord, String englishWord) {
+    public Word(String englishWord, String miwokWord) {
         this.miwokWord = miwokWord;
         this.englishWord = englishWord;
     }
