@@ -6,20 +6,26 @@ package com.example.android.miwok;
 
 public class Word {
 
+    // constant value for not defined views and objects
+    private static final int NOT_DEFINED = -1;
     // miwokWord -> the word in Miwok, englishWord -> the word in English
     private String miwokWord, englishWord;
-    private int imageResourceId;
+    private int imageResourceId, backgroundColorId;
 
     /*
         Constructor
         @param: miwokWord - the word in Miwok
         @param: englishWord - the word in English
-     */
-    public Word(String englishWord, String miwokWord, int imageResourceId) {
+        @param: imageResourceId - the ID from the image resource from java R class
+    */
+    public Word(String englishWord, String miwokWord, int imageResourceId, int backgroundColorId) {
         this.miwokWord = miwokWord;
         this.imageResourceId = imageResourceId;
         this.englishWord = englishWord;
+        this.backgroundColorId = backgroundColorId;
     }
+
+
 
     // returns the word in Miwok
     public String getMiwokWord() {
@@ -47,5 +53,17 @@ public class Word {
 
     public void setImageResourceId(int imageResourceId) {
         this.imageResourceId = imageResourceId;
+    }
+
+    public boolean isImageDefined() {
+        return (imageResourceId != NOT_DEFINED);
+    }
+
+    public int getBackgroundColorId() {
+        return backgroundColorId;
+    }
+
+    public void setBackgroundColorId(int backgroundColorId) {
+        this.backgroundColorId = backgroundColorId;
     }
 }

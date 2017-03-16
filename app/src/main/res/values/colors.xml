@@ -30,7 +30,7 @@
     <color name="category_family">#379237</color>
 
     <!-- Background color for the colors category -->
-    <color name="category_colors">#8800A0</color>
+    <color name="category_colors">#8800a0</color>
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
@@ -39,15 +39,21 @@
     <color name="black">#000000</color>
 
     <!-- Light background color for the colors category -->
-    <color name="category_colors_light">#5e8800a0</color>
+    <color name="category_colors_light">#c88800a0</color>
 
     <!-- Light background color for the phrases category -->
-    <color name="category_phrases_light">#7416afca</color>
+    <color name="category_phrases_light">#c816afca</color>
 
     <!-- Light background color for the family category -->
-    <color name="category_family_light">#b4379237</color>
+    <color name="category_family_light">#c8379237</color>
 
     <!-- Light background color for the numbers category -->
-    <color name="category_numbers_light">#b4fd8e09</color>
+    <color name="category_numbers_light">#c8fd8e09</color>
+
+    <!-- Backgroud colors for images -->
+    <color name="image_background">#FFF7DA</color>
+
+    <!-- White color -->
+    <color name="white">#FFFFFF</color>
 
 </resources>

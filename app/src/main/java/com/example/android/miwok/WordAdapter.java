@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.res.Resources;
 
@@ -63,16 +64,36 @@ public class WordAdapter extends ArrayAdapter<Word>{
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_textview);
         TextView englishTextView = (TextView) listItemView.findViewById(R.id.english_textview);
 
-        // setting a new font
-        Typeface fabricaTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Fabrica.otf");
-
         // Getting the values from the currentWord instance
         // Adding those values to the Views
-        imageView.setImageResource(currentWord.getImageResourceId());
         miwokTextView.setText(currentWord.getMiwokWord());
         englishTextView.setText(currentWord.getEnglishWord());
+
+        // setting a new font
+        Typeface fabricaTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Fabrica.otf");
         miwokTextView.setTypeface(fabricaTypeface);
         englishTextView.setTypeface(fabricaTypeface);
+
+        if(currentWord.isImageDefined()){
+            /*
+                Get the image ID if there is an
+                image associated with this view
+             */
+            imageView.setImageResource(currentWord.getImageResourceId());
+        } else {
+            /*
+                Otherwise set visibility of the
+                ImageView to GONE so it will not
+                take space
+             */
+            imageView.setVisibility(View.GONE);
+        }
+
+        /**
+         * Set background on the Text Views Linear Layout
+         */
+        LinearLayout textViewsLinearLayout = (LinearLayout) listItemView.findViewById(R.id.list_item_textviews);
+        textViewsLinearLayout.setBackgroundResource(currentWord.getBackgroundColorId());
 
         return listItemView;
     }
