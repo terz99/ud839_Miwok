@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" 
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     
-    <TextView
-        android:textColor="@color/black"
-        android:textSize="@dimen/miwok_word_size"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        tools:text="miwok_word"
-        android:id="@+id/miwok_textview"
-        />
-    
-    <TextView
-        android:textSize="@dimen/english_word_size"
+    <LinearLayout
+        android:layout_weight="1"
+        android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="english_word"
-        android:id="@+id/english_textview"
-        />
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/black"
+            android:textSize="@dimen/miwok_word_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="miwok_word"
+            android:id="@+id/miwok_textview"
+            />
+
+        <TextView
+            android:textSize="@dimen/english_word_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="english_word"
+            android:id="@+id/english_textview"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -8,14 +8,16 @@ public class Word {
 
     // miwokWord -> the word in Miwok, englishWord -> the word in English
     private String miwokWord, englishWord;
+    private int imageResourceId;
 
     /*
         Constructor
         @param: miwokWord - the word in Miwok
         @param: englishWord - the word in English
      */
-    public Word(String englishWord, String miwokWord) {
+    public Word(String englishWord, String miwokWord, int imageResourceId) {
         this.miwokWord = miwokWord;
+        this.imageResourceId = imageResourceId;
         this.englishWord = englishWord;
     }
 
@@ -37,5 +39,13 @@ public class Word {
     // sets another value for the word in English
     public void setEnglishWord(String englishWord) {
         this.englishWord = englishWord;
+    }
+
+    public int getImageResourceId() {
+        return imageResourceId;
+    }
+
+    public void setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
     }
 }

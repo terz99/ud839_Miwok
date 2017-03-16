@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.content.res.Resources;
 
@@ -58,11 +59,16 @@ public class WordAdapter extends ArrayAdapter<Word>{
          */
         Word currentWord = getItem(position);
 
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
         TextView miwokTextView = (TextView) listItemView.findViewById(R.id.miwok_textview);
         TextView englishTextView = (TextView) listItemView.findViewById(R.id.english_textview);
 
+        // setting a new font
         Typeface fabricaTypeface = Typeface.createFromAsset(context.getAssets(), "fonts/Fabrica.otf");
 
+        // Getting the values from the currentWord instance
+        // Adding those values to the Views
+        imageView.setImageResource(currentWord.getImageResourceId());
         miwokTextView.setText(currentWord.getMiwokWord());
         englishTextView.setText(currentWord.getEnglishWord());
         miwokTextView.setTypeface(fabricaTypeface);
