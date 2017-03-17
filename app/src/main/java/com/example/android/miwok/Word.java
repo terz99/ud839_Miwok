@@ -10,7 +10,7 @@ public class Word {
     private static final int NOT_DEFINED = -1;
     // miwokWord -> the word in Miwok, englishWord -> the word in English
     private String miwokWord, englishWord;
-    private int imageResourceId, backgroundColorId;
+    private int imageResourceId;
 
     /*
         Constructor
@@ -18,14 +18,22 @@ public class Word {
         @param: englishWord - the word in English
         @param: imageResourceId - the ID from the image resource from java R class
     */
-    public Word(String englishWord, String miwokWord, int imageResourceId, int backgroundColorId) {
+    public Word(String englishWord, String miwokWord, int imageResourceId) {
         this.miwokWord = miwokWord;
         this.imageResourceId = imageResourceId;
         this.englishWord = englishWord;
-        this.backgroundColorId = backgroundColorId;
     }
 
-
+    /*
+    Constructor
+    @param: miwokWord - the word in Miwok
+    @param: englishWord - the word in English
+*/
+    public Word(String englishWord, String miwokWord) {
+        this.miwokWord = miwokWord;
+        imageResourceId = NOT_DEFINED;
+        this.englishWord = englishWord;
+    }
 
     // returns the word in Miwok
     public String getMiwokWord() {
@@ -59,11 +67,4 @@ public class Word {
         return (imageResourceId != NOT_DEFINED);
     }
 
-    public int getBackgroundColorId() {
-        return backgroundColorId;
-    }
-
-    public void setBackgroundColorId(int backgroundColorId) {
-        this.backgroundColorId = backgroundColorId;
-    }
 }

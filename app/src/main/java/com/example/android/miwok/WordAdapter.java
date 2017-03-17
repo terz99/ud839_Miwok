@@ -28,19 +28,26 @@ import java.util.Locale;
 public class WordAdapter extends ArrayAdapter<Word>{
 
 
+    // this instance of the Object Context stores the Activity
+    // where we come from
     private Context context;
+
+    // this variable stores the background color of the
+    // respective category
+    private int backgroundColorResourceId;
 
     /*
         Constructor
         @param: context - the activity to where the items in the list are going to be displayed
         @param: words - the data which is going to be displayed
      */
-    public WordAdapter(Context context, ArrayList<Word> words){
+    public WordAdapter(Context context, ArrayList<Word> words, int backgroudColorResourceId){
         /*
             We pass all the data to the super constructor and we write the layout as 0 since we
             do not need it
          */
         super(context, 0, words);
+        this.backgroundColorResourceId = backgroudColorResourceId;
         this.context = context;
     }
 
@@ -93,7 +100,7 @@ public class WordAdapter extends ArrayAdapter<Word>{
          * Set background on the Text Views Linear Layout
          */
         LinearLayout textViewsLinearLayout = (LinearLayout) listItemView.findViewById(R.id.list_item_textviews);
-        textViewsLinearLayout.setBackgroundResource(currentWord.getBackgroundColorId());
+        textViewsLinearLayout.setBackgroundResource(backgroundColorResourceId);
 
         return listItemView;
     }
