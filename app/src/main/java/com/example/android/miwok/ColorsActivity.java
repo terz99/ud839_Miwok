@@ -1,8 +1,10 @@
 package com.example.android.miwok;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,12 +44,45 @@ public class ColorsActivity extends AppCompatActivity {
 
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
+                // get the word (item on the list) which was clicked
                 Word currentWord = adapter.getItem(position);
 
+                // first release the memory which was used by the previous action
+                // of the media player
+                releaseMediaPlayer(mediaPlayer);
+                // get the resource file and create an audible MediaPlayer object
                 mediaPlayer = MediaPlayer.create(ColorsActivity.this, currentWord.getAudioResourceId());
+                // start playing
                 mediaPlayer.start();
+
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+                    @Override
+                    public void onCompletion(MediaPlayer mediaPlayer) {
+
+                        // free up the memory which was used by the MediaPlayer instance
+                        releaseMediaPlayer(mediaPlayer);
+                    }
+                });
             }
         });
+    }
+
+
+    /**
+     * This method frees up the memory which is used by the MediaPlayer instance
+     * @param mediaPlayer - MediaPlayer instance
+     */
+    private void releaseMediaPlayer(MediaPlayer mediaPlayer) {
+
+        // see if it is initialized with some data
+        if(mediaPlayer != null){
+
+            // release the memory
+            mediaPlayer.release();
+            // set it to uninitialized
+            mediaPlayer = null;
+        }
     }
 
 
@@ -80,6 +115,7 @@ public class ColorsActivity extends AppCompatActivity {
         super.onPause();
 
         mediaPlayer.stop();
+        releaseMediaPlayer(mediaPlayer);
     }
 
 

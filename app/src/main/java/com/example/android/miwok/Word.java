@@ -84,4 +84,17 @@ public class Word {
     public void setAudioResourceId(int audioResourceId) {
         this.audioResourceId = audioResourceId;
     }
+
+    /**
+     * Method used for debugging and printing Log messages
+     * @return String - returns info about the current Word
+     */
+    public String toString(){
+        return "Word{" +
+                "englishWord='" + englishWord + '\'' +
+                ", miwokWord='" + miwokWord + '\'' +
+                ", imageResourceId=" + imageResourceId +
+                ", audioResourceId=" + audioResourceId +
+                "}";
+    }
 }
