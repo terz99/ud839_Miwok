@@ -115,9 +115,9 @@ public class NumbersActivity extends AppCompatActivity {
      */
     protected void onPause() {
 
-        super.onPause();
-
-        mediaPlayer.stop();
+        // release the memory which the audio player had used
         releaseMediaPlayer(mediaPlayer);
+        // put this activity in background
+        super.onPause();
     }
 }
