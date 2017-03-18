@@ -8,9 +8,12 @@ public class Word {
 
     // constant value for not defined views and objects
     private static final int NOT_DEFINED = -1;
+
     // miwokWord -> the word in Miwok, englishWord -> the word in English
     private String miwokWord, englishWord;
-    private int imageResourceId;
+
+    //
+    private int imageResourceId, audioResourceId;
 
     /*
         Constructor
@@ -18,10 +21,11 @@ public class Word {
         @param: englishWord - the word in English
         @param: imageResourceId - the ID from the image resource from java R class
     */
-    public Word(String englishWord, String miwokWord, int imageResourceId) {
+    public Word(String englishWord, String miwokWord, int imageResourceId, int audioResourceId) {
         this.miwokWord = miwokWord;
         this.imageResourceId = imageResourceId;
         this.englishWord = englishWord;
+        this.audioResourceId = audioResourceId;
     }
 
     /*
@@ -29,10 +33,11 @@ public class Word {
     @param: miwokWord - the word in Miwok
     @param: englishWord - the word in English
 */
-    public Word(String englishWord, String miwokWord) {
+    public Word(String englishWord, String miwokWord, int audioResourceId) {
         this.miwokWord = miwokWord;
         imageResourceId = NOT_DEFINED;
         this.englishWord = englishWord;
+        this.audioResourceId = audioResourceId;
     }
 
     // returns the word in Miwok
@@ -55,16 +60,28 @@ public class Word {
         this.englishWord = englishWord;
     }
 
+    // returns te ID of the image
     public int getImageResourceId() {
         return imageResourceId;
     }
 
+    // sets the ID of the image
     public void setImageResourceId(int imageResourceId) {
         this.imageResourceId = imageResourceId;
     }
 
+    // see if there is an image associated with this
     public boolean isImageDefined() {
         return (imageResourceId != NOT_DEFINED);
     }
 
+    // returns the ID of the audio file
+    public int getAudioResourceId() {
+        return audioResourceId;
+    }
+
+    // sets a new value the audio file's ID
+    public void setAudioResourceId(int audioResourceId) {
+        this.audioResourceId = audioResourceId;
+    }
 }
