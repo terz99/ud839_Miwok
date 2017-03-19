@@ -4,21 +4,21 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/tan_background"
+    tools:background="@color/category_colors_light"
     >
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="@dimen/list_item_height"
-        android:layout_height="@dimen/list_item_height"/>
+        android:layout_height="@dimen/list_item_height" />
     
     <LinearLayout
         android:id="@+id/list_item_textviews"
-        android:layout_weight="1"
         android:paddingLeft="@dimen/textviews_padding"
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_height"
-        android:orientation="vertical"
-        tools:background="@color/category_colors_light">
+        android:orientation="vertical">
 
         <TextView
             android:layout_weight="1"
@@ -42,5 +42,7 @@
             android:gravity="top"/>
 
     </LinearLayout>
+
+
 
 </LinearLayout>
