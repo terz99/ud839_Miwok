@@ -1,5 +1,7 @@
 package com.example.android.miwok;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,6 +19,40 @@ public class FamilyActivity extends AppCompatActivity {
     // MediaPlayer class to play audio files
     private MediaPlayer mediaPlayer;
 
+    // AudioManager instance
+    private AudioManager audioManager;
+
+    // AudioManager onAudioFocusChange Listener
+    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener =
+            new AudioManager.OnAudioFocusChangeListener() {
+
+                @Override
+                public void onAudioFocusChange(int focusChange) {
+
+                    if(focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                            focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK){
+
+                        // AUDIOFOCUS_LOSS_TRANSIENT is a constant variable which indicates that we lost
+                        // a transient of the audio focus
+                        // AUDIO_LOSS_TRANSIENT_CAN_DUCK is a constant variable which indicates that we
+                        // lost the transient of the audio focus, but the audio can still lower its level
+                        // and not completely stop the streaming (depends on the app and developer)
+                        mediaPlayer.pause();
+                        mediaPlayer.seekTo(0);
+                    } else if(focusChange == AudioManager.AUDIOFOCUS_GAIN){
+
+                        // AUDIOFOCUS_GAIN is a constant variable which indicates that the app has gained
+                        // audio focus again
+                        mediaPlayer.start();
+                    } else if(focusChange == AudioManager.AUDIOFOCUS_LOSS){
+
+                        // AUDIOFOCUS_LOSS is a constant variable which indicates that the app has lost
+                        // any audio focus for an unknown duration
+                        releaseMediaPlayer(mediaPlayer);
+                    }
+                }
+            };
+
     /**
      * This method creates the ColorsActivity
      * @param savedInstanceState
@@ -26,6 +62,9 @@ public class FamilyActivity extends AppCompatActivity {
         // set the xml file of this activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
+
+        // Set AudioManager system service
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
         // ArrayList of the object Word which stores the data
         ArrayList<Word> words = addData();
@@ -50,20 +89,28 @@ public class FamilyActivity extends AppCompatActivity {
                 // first release the memory which was used by the previous action
                 // of the media player
                 releaseMediaPlayer(mediaPlayer);
-                // get the resource file and create an audible MediaPlayer object
-                mediaPlayer = MediaPlayer.create(FamilyActivity.this, currentWord.getAudioResourceId());
-                // start playing
-                mediaPlayer.start();
+                // get audio focus request
+                int request = audioManager.requestAudioFocus(audioFocusChangeListener,
+                        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                if(request == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
 
-                    @Override
-                    public void onCompletion(MediaPlayer mediaPlayer) {
+                    // get the resource file and create an audible MediaPlayer object
+                    mediaPlayer = MediaPlayer.create(FamilyActivity.this,
+                            currentWord.getAudioResourceId());
+                    // start playing
+                    mediaPlayer.start();
+                    // set what happens when the audio is finished playing
+                    mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
-                        // free up the memory which was used by the MediaPlayer instance
-                        releaseMediaPlayer(mediaPlayer);
-                    }
-                });
+                        @Override
+                        public void onCompletion(MediaPlayer mediaPlayer) {
+
+                            // free up the memory which was used by the MediaPlayer instance
+                            releaseMediaPlayer(mediaPlayer);
+                        }
+                    });
+                }
             }
         });
     }
@@ -83,6 +130,8 @@ public class FamilyActivity extends AppCompatActivity {
             mediaPlayer.release();
             // set it to uninitialized
             mediaPlayer = null;
+            // abandon audio focus request
+            audioManager.abandonAudioFocus(audioFocusChangeListener);
         }
     }
 
@@ -114,11 +163,11 @@ public class FamilyActivity extends AppCompatActivity {
      * the activity is deleted when memory is needed for other
      * processes.
      */
-    protected void onPause() {
+    protected void onStop() {
 
+        // put this activity in background
+        super.onStop();
         // release the memory which the audio player had used
         releaseMediaPlayer(mediaPlayer);
-        // put this activity in background
-        super.onPause();
     }
 }
