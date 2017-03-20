@@ -39,16 +39,16 @@
     <color name="black">#000000</color>
 
     <!-- Light background color for the colors category -->
-    <color name="category_colors_light">#c88800a0</color>
+    <color name="category_colors_light">#968800a0</color>
 
     <!-- Light background color for the phrases category -->
-    <color name="category_phrases_light">#c816afca</color>
+    <color name="category_phrases_light">#9616afca</color>
 
     <!-- Light background color for the family category -->
-    <color name="category_family_light">#c8379237</color>
+    <color name="category_family_light">#96379237</color>
 
     <!-- Light background color for the numbers category -->
-    <color name="category_numbers_light">#c8fd8e09</color>
+    <color name="category_numbers_light">#96fd8e09</color>
 
     <!-- Backgroud colors for images -->
     <color name="image_background">#FFF7DA</color>
