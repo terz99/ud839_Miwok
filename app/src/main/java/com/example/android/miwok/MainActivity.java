@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.solver.SolverVariable;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,63 +36,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // find TextViews by their IDs
-        TextView numbersTextView = (TextView) findViewById(R.id.numbers);
-        TextView phrasesTextView = (TextView) findViewById(R.id.phrases);
-        TextView familyTextView = (TextView) findViewById(R.id.family);
-        TextView colorsTextView = (TextView) findViewById(R.id.colors);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        //Set new typeface to all the TextViews
-        Typeface fabricaTypeface = Typeface.createFromAsset(getAssets(), "fonts/Fabrica.otf");
-        numbersTextView.setTypeface(fabricaTypeface);
-        phrasesTextView.setTypeface(fabricaTypeface);
-        familyTextView.setTypeface(fabricaTypeface);
-        colorsTextView.setTypeface(fabricaTypeface);
+        SimpleFragmentPagerAdapter pagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
 
-        // set click listeners
-        numbersTextView.setOnClickListener(new OnClickListener(){
-
-            public void onClick(View view) {
-
-                Intent newActivity = new Intent(MainActivity.this, NumbersActivity.class);
-                Toast.makeText(MainActivity.this, "Open " + getResources().getString(R.string.category_numbers)
-                        + " category", Toast.LENGTH_SHORT).show();
-                startActivity(newActivity);
-            }
-        });
-
-        phrasesTextView.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View view) {
-
-                Intent newActivity = new Intent(MainActivity.this, PhrasesActivity.class);
-                Toast.makeText(MainActivity.this, "Open " + getResources().getString(R.string.category_phrases)
-                        + " category", Toast.LENGTH_SHORT).show();
-                startActivity(newActivity);
-            }
-        });
-
-        familyTextView.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View view) {
-
-                Intent newActivity = new Intent(MainActivity.this, FamilyActivity.class);
-                Toast.makeText(MainActivity.this, "Open " + getResources().getString(R.string.category_family)
-                        + " category", Toast.LENGTH_SHORT).show();
-                startActivity(newActivity);
-            }
-        });
-
-        colorsTextView.setOnClickListener(new OnClickListener() {
-
-            public void onClick(View view) {
-
-                Intent newActivity = new Intent(MainActivity.this, ColorsActivity.class);
-                Toast.makeText(MainActivity.this, "Open " + getResources().getString(R.string.category_colors)
-                        + " category", Toast.LENGTH_SHORT).show();
-                startActivity(newActivity);
-            }
-        });
+        viewPager.setAdapter(pagerAdapter);
     }
 
 
