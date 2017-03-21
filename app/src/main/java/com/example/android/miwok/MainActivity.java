@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         // get the viewpager
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         // declare a new adapter for the viewpager
-        CategoryAdapter pagerAdapter = new CategoryAdapter(getSupportFragmentManager());
+        CategoryAdapter pagerAdapter = new CategoryAdapter(getSupportFragmentManager(), this);
         // set the adapter to the viewpager
         viewPager.setAdapter(pagerAdapter);
         // get the tabLayout resource
