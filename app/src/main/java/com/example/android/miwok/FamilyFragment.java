@@ -95,7 +95,7 @@ public class FamilyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_family, container, false);
+        View rootView = inflater.inflate(R.layout.word_list, container, false);
 
 
         // Set AudioManager system service
@@ -106,7 +106,7 @@ public class FamilyFragment extends Fragment {
 
         // A custom adapter (WordAdapter) which helps us arrange the items in the ListView
         final WordAdapter adapter = new WordAdapter(getActivity(), words, R.color.category_family_light);
-        ListView listView = (ListView) rootView.findViewById(R.id.family_list_view);
+        ListView listView = (ListView) rootView.findViewById(R.id.word_listview);
         listView.setAdapter(adapter);
 
 
