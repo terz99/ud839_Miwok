@@ -33,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
 
+        // create the MainActivity layout
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // get the viewpager
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        SimpleFragmentPagerAdapter pagerAdapter = new SimpleFragmentPagerAdapter(getSupportFragmentManager());
-
+        // declare a new adapter for the viewpager
+        CategoryAdapter pagerAdapter = new CategoryAdapter(getSupportFragmentManager());
+        // set the adapter to the viewpager
         viewPager.setAdapter(pagerAdapter);
     }
 

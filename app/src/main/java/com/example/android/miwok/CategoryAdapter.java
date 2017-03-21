@@ -8,10 +8,10 @@ import android.support.v4.app.FragmentPagerAdapter;
  * Created by terz99 on 3/21/17.
  */
 
-class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
+class CategoryAdapter extends FragmentPagerAdapter {
 
 
-    public SimpleFragmentPagerAdapter(FragmentManager fm) {
+    public CategoryAdapter(FragmentManager fm) {
         super(fm);
     }
 
