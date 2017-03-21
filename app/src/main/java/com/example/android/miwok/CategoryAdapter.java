@@ -1,5 +1,6 @@
 package com.example.android.miwok;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,6 +10,11 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 
 class CategoryAdapter extends FragmentPagerAdapter {
+
+
+    private final int PAGE_COUNT = 4;
+
+    private String [] tabTitles = {"NUMBERS", "FAMILY", "COLORS", "PHRASES"};
 
 
     public CategoryAdapter(FragmentManager fm) {
@@ -33,6 +39,11 @@ class CategoryAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return PAGE_COUNT;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return tabTitles[position];
     }
 }

@@ -53,4 +53,10 @@
     <!-- Backgroud colors for images -->
     <color name="image_background">#FFF7DA</color>
 
+    <!-- Selected text and indicator color for the tab layout -->
+    <color name="selected_text_color">#FFFFFF</color>
+
+    <!-- Unselected text color for the tab layout -->
+    <color name="unselected_text_color">#A8A19E</color>
+
 </resources>
